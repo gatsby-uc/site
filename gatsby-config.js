@@ -1,3 +1,8 @@
+const {
+  GATSBY_ACKEE_DOMAIN_ID,
+  GATSBY_ACKEE_SERVER
+} = process.env;
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby UC`,
@@ -24,5 +29,13 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: "gatsby-plugin-ackee-tracker",
+      options: {
+        domainId: GATSBY_ACKEE_DOMAIN_ID || "",
+        server: GATSBY_ACKEE_SERVER || "",
+        detailed: true,
+      }
+    }
   ],
 };
