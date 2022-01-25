@@ -1,0 +1,14 @@
+# NPM/Node Modules
+node_modules/
+*.log
+
+# Gatsby
+.cache/
+public
+
+
+# Yarn 3 cache
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
