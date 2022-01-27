@@ -1,41 +1,52 @@
-const {
-  GATSBY_ACKEE_DOMAIN_ID,
-  GATSBY_ACKEE_SERVER
-} = process.env;
+const { GATSBY_ACKEE_DOMAIN_ID, GATSBY_ACKEE_SERVER } = process.env;
+
+const otherPlugins = [];
+GATSBY_ACKEE_DOMAIN_ID &&
+  GATSBY_ACKEE_SERVER &&
+  otherPlugins.push({
+    resolve: 'gatsby-plugin-ackee-tracker',
+    options: {
+      domainId: GATSBY_ACKEE_DOMAIN_ID || '',
+      server: GATSBY_ACKEE_SERVER || '',
+      detailed: true,
+    },
+  });
 
 module.exports = {
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Gatsby UC`,
     siteUrl: `https://gatsbyuc.dev`,
   },
   plugins: [
-    "gatsby-plugin-postcss",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: "src/images/icon.png",
+        icon: 'src/images/logo.svg',
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
-    {
-      resolve: "gatsby-plugin-ackee-tracker",
-      options: {
-        domainId: GATSBY_ACKEE_DOMAIN_ID || "",
-        server: GATSBY_ACKEE_SERVER || "",
-        detailed: true,
+        rule: {
+          include: /images/
+        }
       }
-    }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+      },
+      __key: 'images',
+    },
+    ...otherPlugins,
   ],
 };

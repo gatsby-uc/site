@@ -1,0 +1,7 @@
+# Yarn/npm 
+.yarn/*
+node_modules
+
+# Gatsby
+.cache
+public
