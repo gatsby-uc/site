@@ -7157,7 +7157,7 @@ __metadata:
   resolution: "gatsby-uc@workspace:."
   dependencies:
     autoprefixer: ^10.4.2
-    gatsby: ^4.5.4
+    gatsby: ^4.6.0
     gatsby-plugin-ackee-tracker: ^3.2.2
     gatsby-plugin-image: ^2.6.0
     gatsby-plugin-manifest: ^4.6.0
@@ -7187,7 +7187,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^4.5.4":
+"gatsby@npm:^4.6.0":
   version: 4.6.0
   resolution: "gatsby@npm:4.6.0"
   dependencies:
