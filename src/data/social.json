@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Discord",
+    "href": "https://discord.gg/NHgWyxSE",
+    "cta": "Chat",
+    "color": "#5865F2"
+  },
+  {
+    "name": "Twitter",
+    "href": "https://twitter.com/gatsby_uc",
+    "cta": "Share",
+    "color": "#1DA1F2"
+  },
+  {
+    "name": "GitHub",
+    "href": "https://github.com/gatsby-uc",
+    "cta": "Colaborate",
+    "color": "#181717"
+  }
+]

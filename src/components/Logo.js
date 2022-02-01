@@ -2,11 +2,11 @@ import Logo from '../images/logo.svg';
 
 export default function JSLogo(props) {
   return (
-    <div {...props}>
+    <div {...props} >
       <span className="sr-only">Gatsby User Collective</span>
-      <span ariaHidden="true">
+      <div ariaHidden="true" className='max-h-full dark:bg-guc-pink p-4 pt-2 rounded-full'>
         <Logo />
-      </span>
+      </div>
     </div>
   );
 }
