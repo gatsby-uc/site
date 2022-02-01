@@ -1,26 +1,28 @@
+import { useState, useEffect, useLayoutEffect } from 'react';
 
-import { useState, useEffect } from "react";
+const isBrowser = typeof window !== 'undefined';
 
-export function useDarkMode() {
+export function useDarkMode(initialValue = false) {
   // Use our useLocalStorage hook to persist state through a page refresh.
   // Read the recipe for this hook to learn more: usehooks.com/useLocalStorage
-  const [enabledState, setEnabledState] = useLocalStorage("dark-mode-enabled");
+  const [enabledState, setEnabledState] = useLocalStorage('dark-mode-enabled');
   // See if user has set a browser or OS preference for dark mode.
   // The usePrefersDarkMode hook composes a useMedia hook (see code below).
-  const prefersDarkMode = usePrefersDarkMode();
+  const prefersDarkMode = usePrefersDarkMode() || initialValue;
   // If enabledState is defined use it, otherwise fallback to prefersDarkMode.
   // This allows user to override OS level setting on our website.
-  const enabled =
-    typeof enabledState !== "undefined" ? enabledState : prefersDarkMode;
+  const enabled = enabledState != null ? enabledState : prefersDarkMode;
   // Fire off effect that add/removes dark mode class
-  useEffect(
+  useLayoutEffect(
     () => {
-      const className = "dark";
-      const element = window.document.documentElement;
-      if (enabled) {
-        element.classList.add(className);
-      } else {
-        element.classList.remove(className);
+      const className = 'dark';
+      if (isBrowser) {
+        const element = window?.document?.documentElement;
+        if (enabled) {
+          element.classList.add(className);
+        } else {
+          element.classList.remove(className);
+        }
       }
     },
     [enabled] // Only re-call effect when value changes
@@ -34,13 +36,17 @@ export function useDarkMode() {
 // Thanks to hook composition we can hide away that extra complexity!
 // Read the recipe for useMedia to learn more: usehooks.com/useMedia
 function usePrefersDarkMode() {
-  return useMedia(["(prefers-color-scheme: dark)"], [true], false);
+  return useMedia(['(prefers-color-scheme: dark)'], [true], false);
 }
 
 function useLocalStorage(key, initialValue) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(() => {
+    if (!isBrowser) {
+      return initialValue;
+    }
+
     try {
       // Get from local storage by key
       const item = window.localStorage.getItem(key);
@@ -57,12 +63,13 @@ function useLocalStorage(key, initialValue) {
   const setValue = (value) => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);
       // Save to local storage
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      if (isBrowser) {
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      }
     } catch (error) {
       // A more advanced implementation would handle the error case
       console.log(error);
@@ -72,14 +79,15 @@ function useLocalStorage(key, initialValue) {
 }
 
 function useMedia(queries, values, defaultValue) {
+
   // Array containing a media query list for each query
-  const mediaQueryLists = queries.map((q) => window.matchMedia(q));
+  const mediaQueryLists = isBrowser ? queries.map((q) => window.matchMedia(q)) : [];
   // Function that gets value based on matching media query
   const getValue = () => {
     // Get index of first media query that matches
     const index = mediaQueryLists.findIndex((mql) => mql.matches);
     // Return related value or defaultValue if none
-    return typeof values[index] !== "undefined" ? values[index] : defaultValue;
+    return typeof values[index] !== 'undefined' ? values[index] : defaultValue;
   };
   // State and setter for matched value
   const [value, setValue] = useState(getValue);
@@ -92,8 +100,7 @@ function useMedia(queries, values, defaultValue) {
       // Set a listener for each media query with above handler as callback.
       mediaQueryLists.forEach((mql) => mql.addListener(handler));
       // Remove listeners on cleanup
-      return () =>
-        mediaQueryLists.forEach((mql) => mql.removeListener(handler));
+      return () => mediaQueryLists.forEach((mql) => mql.removeListener(handler));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [] // Empty array ensures effect is only run on mount and unmount

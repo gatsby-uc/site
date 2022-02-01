@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Logo from '../images/logo.svg';
 
 export default function JSLogo(props) {

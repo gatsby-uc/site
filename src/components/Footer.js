@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import socialIcons from "./Icons";
 
+import socialIcons from "./Icons";
 
 export default function Footer() {
   const {

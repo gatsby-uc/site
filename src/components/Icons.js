@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const socialIcons = {
   discord: (props) => (
     <svg viewBox="0 0 71 55" fill="none" {...props}>

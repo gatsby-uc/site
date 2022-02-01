@@ -1786,6 +1786,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/react@npm:^1.4.3":
+  version: 1.4.3
+  resolution: "@headlessui/react@npm:1.4.3"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 0c55bba6dc09a81576ec7d41320e3beb57b3f4576637ac4aad6048af851d5fe5434fd0d10dfb5c7b2db16eca6ded5eb3368822ddb87ff4dcb99fc3592ef63b0a
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.5.0":
   version: 0.5.0
   resolution: "@humanwhocodes/config-array@npm:0.5.0"
@@ -2329,6 +2339,43 @@ __metadata:
     webpack-plugin-serve:
       optional: true
   checksum: 36a7b0c63f0aabde856a2b43f3f3bfa7919920afa67b4fbcf7d4980b286c7c11e34ada13654d81bf30c3d3e2c12a5b9eef6c15e21a200003b8030809d3ddd6c6
+  languageName: node
+  linkType: hard
+
+"@prefresh/babel-plugin@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@prefresh/babel-plugin@npm:0.4.1"
+  checksum: bfa2389caec39a9996c12afc2c789fff313716dbee525dc3d10153a055581f648543ea1167cac909aeb16682ab4cb99147c715ba0fef3393cfd89be58fb43f5e
+  languageName: node
+  linkType: hard
+
+"@prefresh/core@npm:^1.3.1":
+  version: 1.3.2
+  resolution: "@prefresh/core@npm:1.3.2"
+  peerDependencies:
+    preact: ^10.0.0
+  checksum: 3056de5db344354e2f3edb39f9bfe8019a8dd029e0b2f475dfc58dac03ad2c21d67650e6832e76e89233f4906a4e34c0e161a4015161f1a2dcf65da594948cfb
+  languageName: node
+  linkType: hard
+
+"@prefresh/utils@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "@prefresh/utils@npm:1.1.1"
+  checksum: ec1c83a2983d37c9ce96b1c481912c3ae411e4722dc38997131342baecfe9d6c59233f1a5ff0003e3592d29328c22202742b3768062242c055d4f58f4af14704
+  languageName: node
+  linkType: hard
+
+"@prefresh/webpack@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "@prefresh/webpack@npm:3.3.2"
+  dependencies:
+    "@prefresh/core": ^1.3.1
+    "@prefresh/utils": ^1.1.0
+  peerDependencies:
+    "@prefresh/babel-plugin": ^0.4.0
+    preact: ^10.4.0
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 775432b0064ac762e509872400a9d9300b56dd41f3148c2e5ed2d79d07f58cf5c1e881ff97db3c03ec7853aff69f87e7ef040a6974ca5eae9318b4885ddb153e
   languageName: node
   linkType: hard
 
@@ -6968,6 +7015,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-preact@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "gatsby-plugin-preact@npm:6.6.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    "@gatsbyjs/webpack-hot-middleware": ^2.25.2
+    "@prefresh/babel-plugin": ^0.4.1
+    "@prefresh/webpack": ^3.3.2
+  peerDependencies:
+    gatsby: ^4.0.0-next
+    preact: ^10.3.4
+    preact-render-to-string: ^5.1.8
+  checksum: 2a1f2421f42154e8b6ca30f995bc43ecdd8c5a8e365a241f2c04471068b51319319472eabec8c740434e20b23555576cde0278fd6e0674bdabe813274358ee71
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-react-helmet@npm:^5.6.0":
   version: 5.6.0
   resolution: "gatsby-plugin-react-helmet@npm:5.6.0"
@@ -7168,12 +7231,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-uc@workspace:."
   dependencies:
+    "@headlessui/react": ^1.4.3
     autoprefixer: ^10.4.2
     gatsby: ^4.6.0
     gatsby-plugin-ackee-tracker: ^3.2.2
     gatsby-plugin-image: ^2.6.0
     gatsby-plugin-manifest: ^4.6.0
     gatsby-plugin-postcss: ^5.6.0
+    gatsby-plugin-preact: ^6.6.0
     gatsby-plugin-react-helmet: ^5.6.0
     gatsby-plugin-react-svg: ^3.1.0
     gatsby-plugin-sharp: ^4.6.0
@@ -7182,10 +7247,11 @@ __metadata:
     gatsby-transformer-json: ^4.6.0
     gatsby-transformer-sharp: ^4.6.0
     postcss: ^8.4.5
+    preact: ^10.6.5
+    preact-render-to-string: ^5.1.19
     prettier: ^2.5.1
-    react: ^18.0.0-beta-24dd07bd2-20211208
-    react-dark-mode-toggle-2: ^2.0.2
-    react-dom: ^18.0.0-beta-24dd07bd2-20211208
+    react: ^17.0.2
+    react-dom: ^17.0.2
     react-helmet: ^6.1.0
     tailwindcss: ^3.0.18
   languageName: unknown
@@ -9196,7 +9262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.clonedeep@npm:4.5.0, lodash.clonedeep@npm:^4.5.0":
+"lodash.clonedeep@npm:4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
   checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
@@ -9316,13 +9382,6 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
-  languageName: node
-  linkType: hard
-
-"lottie-web@npm:^5.7.6":
-  version: 5.8.1
-  resolution: "lottie-web@npm:5.8.1"
-  checksum: 48c19ea7863310150dc9e46855b0f85179f3768ac0c0cf4f3ffb18944819079d3046c31ca04f2748291f3c413a855329a12ce9c3faae056a1a869776b6ed12a9
   languageName: node
   linkType: hard
 
@@ -11348,6 +11407,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact-render-to-string@npm:^5.1.19":
+  version: 5.1.19
+  resolution: "preact-render-to-string@npm:5.1.19"
+  dependencies:
+    pretty-format: ^3.8.0
+  peerDependencies:
+    preact: ">=10"
+  checksum: b8b454d7b4bd93d6dcfc5e1269cfef1756e850c524e80340be62b88582cb88eb926a3edc0088f4dc2a454f56c1e09faa10bced081f25204342fd338275aa5af1
+  languageName: node
+  linkType: hard
+
+"preact@npm:^10.6.5":
+  version: 10.6.5
+  resolution: "preact@npm:10.6.5"
+  checksum: 020718a187e12d73cfb036dabb29fb64914c166633f255867ebcf6afca43d61a984d02375f90fe16fa93be662256a05c273e808cf60b08562c4440d2744d9b66
+  languageName: node
+  linkType: hard
+
 "prebuild-install@npm:^7.0.0":
   version: 7.0.0
   resolution: "prebuild-install@npm:7.0.0"
@@ -11408,6 +11485,13 @@ __metadata:
     lodash: ^4.17.20
     renderkid: ^2.0.4
   checksum: 16775d06f9a695d17103414d610b1281f9535ee1f2da1ce1e1b9be79584a114aa7eac6dcdcc5ef151756d3c014dfd4ac1c7303ed8016d0cec12437cfdf4021c6
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "pretty-format@npm:3.8.0"
+  checksum: 21a114d43ef06978f8f7f6212be4649b0b094f05d9b30e14e37550bf35c8ca24d8adbca9e5adc4cc15d9eaf7a1e7a30478a4dc37b30982bfdf0292a5b385484c
   languageName: node
   linkType: hard
 
@@ -11669,18 +11753,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dark-mode-toggle-2@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "react-dark-mode-toggle-2@npm:2.0.2"
-  dependencies:
-    react-lottie-player: ^1.4.1
-  peerDependencies:
-    react: ^16.14.0 || ^17.0.0
-    react-dom: ^16.14.0 || ^17.0.0
-  checksum: 5b32d924ed55ad82b8ba6653afbe517da0e17c1cd90219a0937f7f11c92972a5944adbbb53aaf54eb0493744e26754d1922fa57b18d81eda9138950a93c3d6f9
-  languageName: node
-  linkType: hard
-
 "react-dev-utils@npm:^11.0.4":
   version: 11.0.4
   resolution: "react-dev-utils@npm:11.0.4"
@@ -11713,16 +11785,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.0.0-beta-24dd07bd2-20211208":
-  version: 18.0.0-rc.0-next-fe905f152-20220107
-  resolution: "react-dom@npm:18.0.0-rc.0-next-fe905f152-20220107"
+"react-dom@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-    scheduler: 0.21.0-rc.0-next-fe905f152-20220107
+    scheduler: ^0.20.2
   peerDependencies:
-    react: 18.0.0-rc.0-next-fe905f152-20220107
-  checksum: 24ef9aad005db4f6cc182b0e57506ae1251b57c9dc0e5ccabd08cb8d69b9b23ca2fcc79a4d92c3f02ed41ebe60126d016ebe6532a9a9cef9023e17e5494676c8
+    react: 17.0.2
+  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
   languageName: node
   linkType: hard
 
@@ -11768,19 +11840,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-lottie-player@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "react-lottie-player@npm:1.4.1"
-  dependencies:
-    fast-deep-equal: ^3.1.3
-    lodash.clonedeep: ^4.5.0
-    lottie-web: ^5.7.6
-  peerDependencies:
-    react: ^16.0.0 || ^17.0.0
-  checksum: 1d75c104cd479863d57deced5d767a6425e476eaac8b1b40f7b753467b90cc618abfa6c13236ade8d69a79ec84058b84ca155d1be71c5a43d4e386f09a80a9a5
-  languageName: node
-  linkType: hard
-
 "react-refresh@npm:^0.9.0":
   version: 0.9.0
   resolution: "react-refresh@npm:0.9.0"
@@ -11797,13 +11856,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0-beta-24dd07bd2-20211208":
-  version: 18.0.0-rc.0-next-fe905f152-20220107
-  resolution: "react@npm:18.0.0-rc.0-next-fe905f152-20220107"
+"react@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-  checksum: f3bb3b915b12c81efaec86d2183041fe355d278838de66709e3a81f20657828be8ef916c4d8d5fd3ec438cbcaaecfa4b9f090aa8ed7a901783fccb1a319e2faa
+  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
   languageName: node
   linkType: hard
 
@@ -12300,13 +12359,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.21.0-rc.0-next-fe905f152-20220107":
-  version: 0.21.0-rc.0-next-fe905f152-20220107
-  resolution: "scheduler@npm:0.21.0-rc.0-next-fe905f152-20220107"
+"scheduler@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "scheduler@npm:0.20.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-  checksum: 72d1e7451c0af41ba6dcf53aaafeb72620e9d4d4cf30b3709f7a93c4e31fc872ce574a0a7bef168175ee4d148a2b9ca2e318d02387600c8b7f95da0d4ff185bb
+  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 

@@ -13,33 +13,12 @@ GATSBY_ACKEE_DOMAIN_ID &&
   });
 
 module.exports = {
-  jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Gatsby UC`,
     siteUrl: `https://gatsbyuc.dev`,
   },
   plugins: [
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: 'src/images/logo.svg',
-      },
-    },
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-transformer-json',
-    {
-      resolve: 'gatsby-plugin-react-svg',
-      options: {
-        rule: {
-          include: /images/
-        }
-      }
-    },
+    // Data plugins
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -54,6 +33,36 @@ module.exports = {
         path: './src/data/',
       },
     },
+    'gatsby-transformer-sharp',
+    'gatsby-transformer-json',
+
+    //Integration Plugins
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    `gatsby-plugin-preact`,
+
+    // Plumbing Plugins
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/logo.svg',
+      },
+    },
+
+
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/
+        }
+      }
+    },
+    
+    // 3rd party plugins
     ...otherPlugins,
   ],
 };
