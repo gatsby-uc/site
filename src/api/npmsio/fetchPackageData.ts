@@ -1,3 +1,4 @@
+import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 import {
@@ -8,7 +9,7 @@ import {
 } from '../../data/supabase';
 import { getMultiPackageInfo } from '../../data/npmsio';
 
-export default async function handler(req, res) {
+export default async function handler(req: GatsbyFunctionRequest, res: GatsbyFunctionResponse) {
   if (req.method !== `POST`) {
     res.status(StatusCodes.METHOD_NOT_ALLOWED).send(ReasonPhrases.METHOD_NOT_ALLOWED);
   }

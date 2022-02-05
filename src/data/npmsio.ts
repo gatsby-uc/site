@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-export async function getMultiPackageInfo(packages) {
+export async function getMultiPackageInfo(packages: string[]) {
   const url = `https://api.npms.io/v2/package/mget`;
   const response = await fetch(url, {
     method: 'POST',
@@ -11,7 +11,7 @@ export async function getMultiPackageInfo(packages) {
     body: JSON.stringify(packages),
   });
 
-  const json = await response.json();
+  const json = await response.json() as any;
 
   if (!response.ok) {
     throw new Error(`${response.status} | ${json.code} | ${json.message}`);
