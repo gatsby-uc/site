@@ -12,3 +12,7 @@ public
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+
+# Environment Variables
+.env*
