@@ -1,4 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import { getIp } from './ipify';
+
+const { GATSBY_CLOUD = false, BRANCH = null } = process.env;
 
 export const publicClient = createClient(
   process.env.SUPABASE_API_URL,
@@ -20,14 +23,31 @@ export async function getPackages(supabase) {
   return packages;
 }
 
-export async function logPackageInfo(supabase, packageInfo) {
+export async function logPackageInfo(supabase, ...rows) {
+  console.log(rows);
   const { data, error } = await supabase
     .from('npms-fetch-log')
-    .insert([{ body: packageInfo }], { returning: 'minimal' });
+    .insert(rows, { returning: 'minimal' });
 
   if (error) {
     throw new Error(error);
   }
+
+  return data;
+}
+
+export async function generateSourceData(req) {
+  const { ip, hostname } = req;
+  const userAgent = req.get('user-agent');
+
+  const data = {
+    userAgent,
+    clientIp: ip,
+    hostname: hostname,
+    serverIp: await getIp(),
+    gitBranch: BRANCH ?? 'unknown',
+    gatsbyCloud: GATSBY_CLOUD,
+  };
 
   return data;
 }

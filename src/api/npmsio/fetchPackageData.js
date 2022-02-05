@@ -1,4 +1,4 @@
-import { serverClient as supabase, getPackages, logPackageInfo } from '../../data/supabase';
+import { serverClient as supabase, getPackages, logPackageInfo, generateSourceData } from '../../data/supabase';
 import { getMultiPackageInfo } from '../../data/npmsio';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
@@ -15,11 +15,9 @@ export default async function handler(req, res) {
 
       const packageNames = packages.map(({ name }) => name);
 
-      console.log(packageNames);
-
       const packageInfo = await getMultiPackageInfo(packageNames);
 
-      await logPackageInfo(supabase, packageInfo);
+      await logPackageInfo(supabase, { body: packageInfo, source: await generateSourceData(req) });
 
       res.status(StatusCodes.OK).json({
         message: `Successfully fetched package data.`,
