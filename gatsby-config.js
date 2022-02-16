@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { GATSBY_ACKEE_DOMAIN_ID, GATSBY_ACKEE_SERVER } = process.env;
 
 const otherPlugins = [];
