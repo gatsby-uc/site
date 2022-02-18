@@ -1,21 +1,3 @@
-import fetch from 'node-fetch';
+import { NpmsIO } from 'npms.io';
 
-export async function getMultiPackageInfo(packages: string[]) {
-  const url = `https://api.npms.io/v2/package/mget`;
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(packages),
-  });
-
-  const json = await response.json() as any;
-
-  if (!response.ok) {
-    throw new Error(`${response.status} | ${json.code} | ${json.message}`);
-  }
-
-  return json
-}
+export const npmsio = new NpmsIO().api;

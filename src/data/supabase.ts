@@ -1,5 +1,4 @@
 import { createClient, PostgrestError, SupabaseClient } from '@supabase/supabase-js';
-import { GatsbyFunctionRequest } from 'gatsby';
 import { getIp } from './ipify';
 
 const { GATSBY_CLOUD = false, BRANCH = null } = process.env;
@@ -16,10 +15,13 @@ export const serverClient = createClient(
 
 type Package = {
   name: string;
-}
+};
 
 export async function getPackages(supabase: SupabaseClient) {
-  const { data: packages, error } = await supabase.from('packages').select('name') as { data: Package[], error: PostgrestError };
+  const { data: packages, error } = (await supabase.from('packages').select('name')) as {
+    data: Package[];
+    error: PostgrestError;
+  };
 
   if (error) {
     throw new Error(error.message);
@@ -28,11 +30,20 @@ export async function getPackages(supabase: SupabaseClient) {
   return packages;
 }
 
-export async function logPackageInfo(supabase: SupabaseClient, ...rows: {}[]) {
-  console.log(rows);
+export type NpmsDataRow = {
+  analyzed_at: string;
+  package: string;
+  data: string;
+}
+
+
+export async function upsertNpmsData(
+  supabase: SupabaseClient,
+  ...rows: NpmsDataRow[]
+) {
   const { data, error } = await supabase
-    .from('npms-fetch-log')
-    .insert(rows, { returning: 'minimal' });
+    .from('npms-data-log')
+    .upsert(rows, { returning: 'minimal' });
 
   if (error) {
     throw new Error(error.message);
