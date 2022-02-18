@@ -34,6 +34,7 @@ export type NpmsDataRow = {
   analyzed_at: string;
   package: string;
   data: string;
+  last_checked_at: string;
 }
 
 
