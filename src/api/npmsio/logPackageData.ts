@@ -6,6 +6,8 @@ import {
   getPackages,
   upsertNpmsData,
   NpmsDataRow,
+  PackageScoreRow,
+  upsertPackageScores,
 } from '../../data/supabase';
 import { npmsio } from '../../data/npmsio';
 
@@ -14,7 +16,7 @@ export default async function handler(req: GatsbyFunctionRequest, res: GatsbyFun
     res.status(StatusCodes.METHOD_NOT_ALLOWED).send(ReasonPhrases.METHOD_NOT_ALLOWED);
   }
   try {
-    const timestamp = new Date()
+    const timestamp = new Date();
 
     const packages = await getPackages(supabase);
     const packageNames = packages.map(({ name }) => name);
@@ -31,6 +33,19 @@ export default async function handler(req: GatsbyFunctionRequest, res: GatsbyFun
     );
 
     await upsertNpmsData(supabase, ...formattedPackageInfo);
+
+    const formattedScoreInfo: PackageScoreRow[] = Object.entries(packageInfo).map(
+      ([packageName, { analyzedAt, score }]) => ({
+        package: packageName,
+        analyzed_at: analyzedAt,
+        final: score?.final,
+        quality: score?.detail?.quality,
+        popularity: score?.detail?.popularity,
+        maintenance: score?.detail?.maintenance,
+      })
+    );
+
+    await upsertPackageScores(supabase, ...formattedScoreInfo);
 
     res.status(StatusCodes.OK).json({
       message: `Successfully fetched package data.`,

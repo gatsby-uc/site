@@ -37,6 +37,15 @@ export type NpmsDataRow = {
   last_checked_at: string;
 }
 
+export type PackageScoreRow = {
+  package: string;
+  analyzed_at: string;
+  final: number;
+  quality: number;
+  popularity: number;
+  maintenance: number;
+}
+
 
 export async function upsertNpmsData(
   supabase: SupabaseClient,
@@ -44,6 +53,21 @@ export async function upsertNpmsData(
 ) {
   const { data, error } = await supabase
     .from('npms-data-log')
+    .upsert(rows, { returning: 'minimal' });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+export async function upsertPackageScores(
+  supabase: SupabaseClient,
+  ...rows: PackageScoreRow[]
+) {
+  const { data, error } = await supabase
+    .from('package-scores')
     .upsert(rows, { returning: 'minimal' });
 
   if (error) {
