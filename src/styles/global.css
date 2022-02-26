@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-button {
+  @apply inline-flex bg-guc-blue dark:bg-guc-pink h-12 w-12 rounded-lg items-center justify-center text-guc-pink dark:text-guc-blue p-2;
+}

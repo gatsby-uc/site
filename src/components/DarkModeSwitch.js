@@ -11,7 +11,7 @@ export default function DarkModeSwitch() {
       <Switch
         checked={enabled}
         onChange={setEnabled}
-        className={`inline-grid grid-cols-1 grid-rows-1 items-center justify-items-center rounded-lg bg-guc-blue dark:bg-guc-pink w-12 h-12 `}
+        className={`nav-button`}
       >
         <span className="sr-only">Enable dark mode</span>
         <svg width="24" height="24" fill="none" className="hidden dark:block">
