@@ -7,6 +7,9 @@
   "keywords": [
     "gatsby"
   ],
+  "workspaces": [
+    "plugins/**"
+  ],
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
@@ -29,6 +32,7 @@
     "gatsby-plugin-react-svg": "^3.1.0",
     "gatsby-plugin-sharp": "^4.6.0",
     "gatsby-plugin-sitemap": "^5.6.0",
+    "gatsby-plugin-supabase": "workspace:^",
     "gatsby-source-filesystem": "^4.6.0",
     "gatsby-transformer-json": "^4.6.0",
     "gatsby-transformer-sharp": "^4.6.0",

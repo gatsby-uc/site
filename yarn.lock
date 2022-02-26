@@ -7337,6 +7337,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-supabase@workspace:^, gatsby-plugin-supabase@workspace:plugins/gatsby-source-supabase":
+  version: 0.0.0-use.local
+  resolution: "gatsby-plugin-supabase@workspace:plugins/gatsby-source-supabase"
+  peerDependencies:
+    "@supabase/supabase-js": "*"
+  languageName: unknown
+  linkType: soft
+
 "gatsby-plugin-typescript@npm:^4.6.0":
   version: 4.6.0
   resolution: "gatsby-plugin-typescript@npm:4.6.0"
@@ -7483,6 +7491,7 @@ __metadata:
     gatsby-plugin-react-svg: ^3.1.0
     gatsby-plugin-sharp: ^4.6.0
     gatsby-plugin-sitemap: ^5.6.0
+    gatsby-plugin-supabase: "workspace:^"
     gatsby-source-filesystem: ^4.6.0
     gatsby-transformer-json: ^4.6.0
     gatsby-transformer-sharp: ^4.6.0
