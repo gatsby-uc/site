@@ -8,6 +8,8 @@ import {
   NpmsDataRow,
   PackageScoreRow,
   upsertPackageScores,
+  updatePackageLastAnalyzedAt,
+  PackageLastAnalyzedAt,
 } from '../../data/supabase';
 import { npmsio } from '../../data/npmsio';
 
@@ -23,18 +25,18 @@ export default async function handler(req: GatsbyFunctionRequest, res: GatsbyFun
 
     const packageInfo = await npmsio.package.multiPackageInfo(packageNames);
 
-    const formattedPackageInfo: NpmsDataRow[] = Object.entries(packageInfo).map(
-      ([packageName, info]) => ({
-        package: packageName,
-        data: JSON.stringify(info),
-        analyzed_at: info.analyzedAt,
-        last_checked_at: timestamp.toISOString(),
-      })
-    );
+    const packageEntries = Object.entries(packageInfo);
+
+    const formattedPackageInfo: NpmsDataRow[] = packageEntries.map(([packageName, info]) => ({
+      package: packageName,
+      data: JSON.stringify(info),
+      analyzed_at: info.analyzedAt,
+      last_checked_at: timestamp.toISOString(),
+    }));
 
     await upsertNpmsData(supabase, ...formattedPackageInfo);
 
-    const formattedScoreInfo: PackageScoreRow[] = Object.entries(packageInfo).map(
+    const formattedScoreInfo: PackageScoreRow[] = packageEntries.map(
       ([packageName, { analyzedAt, score }]) => ({
         package: packageName,
         analyzed_at: analyzedAt,
@@ -46,6 +48,16 @@ export default async function handler(req: GatsbyFunctionRequest, res: GatsbyFun
     );
 
     await upsertPackageScores(supabase, ...formattedScoreInfo);
+
+    const packagesUpdated: Promise<PackageLastAnalyzedAt>[] = packageEntries.map(
+      ([packageName, { analyzedAt }]) =>
+        updatePackageLastAnalyzedAt(supabase, {
+          name: packageName,
+          last_analyzed_at: analyzedAt,
+        })
+    );
+
+    await Promise.all(packagesUpdated);
 
     res.status(StatusCodes.OK).json({
       message: `Successfully fetched package data.`,

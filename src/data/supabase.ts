@@ -35,7 +35,7 @@ export type NpmsDataRow = {
   package: string;
   data: string;
   last_checked_at: string;
-}
+};
 
 export type PackageScoreRow = {
   package: string;
@@ -44,13 +44,9 @@ export type PackageScoreRow = {
   quality: number;
   popularity: number;
   maintenance: number;
-}
+};
 
-
-export async function upsertNpmsData(
-  supabase: SupabaseClient,
-  ...rows: NpmsDataRow[]
-) {
+export async function upsertNpmsData(supabase: SupabaseClient, ...rows: NpmsDataRow[]) {
   const { data, error } = await supabase
     .from('npms-data-log')
     .upsert(rows, { returning: 'minimal' });
@@ -62,13 +58,29 @@ export async function upsertNpmsData(
   return data;
 }
 
-export async function upsertPackageScores(
-  supabase: SupabaseClient,
-  ...rows: PackageScoreRow[]
-) {
+export async function upsertPackageScores(supabase: SupabaseClient, ...rows: PackageScoreRow[]) {
   const { data, error } = await supabase
     .from('package-scores')
     .upsert(rows, { returning: 'minimal' });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+export type PackageLastAnalyzedAt = {
+  name: string;
+  last_analyzed_at: string;
+};
+
+export async function updatePackageLastAnalyzedAt(supabase, packageData: PackageLastAnalyzedAt) {
+  const { name, last_analyzed_at } = packageData;
+  const { data, error } = await supabase
+    .from('packages')
+    .update({ last_analyzed_at })
+    .match({ name });
 
   if (error) {
     throw new Error(error.message);
