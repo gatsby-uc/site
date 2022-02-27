@@ -7,7 +7,6 @@ export default function DarkModeSwitch() {
   const [enabled, setEnabled] = useDarkMode(true);
 
   return (
-    <div className="">
       <Switch
         checked={enabled}
         onChange={setEnabled}
@@ -44,6 +43,5 @@ export default function DarkModeSwitch() {
           </defs>
         </svg>
       </Switch>
-    </div>
   );
 }

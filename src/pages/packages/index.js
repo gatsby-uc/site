@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 
+import Layout from '../../components/Layout';
+
 export default function PackagePage({ data}) {
   const supabasePackages = data?.allSupabasePackage?.nodes;
   
   return (
+    <Layout>
     <ul>
       {supabasePackages?.length > 0
         ? supabasePackages.map((packageData) => (
@@ -16,6 +19,7 @@ export default function PackagePage({ data}) {
           ))
         : null}
     </ul>
+    </Layout>
   );
 }
 // This is the page query that connects the data to the actual component. Here you can query for any and all fields
