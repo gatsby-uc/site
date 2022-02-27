@@ -12,10 +12,6 @@ const navItems = [
     label: 'Packages',
     path: '/packages/',
   },
-  {
-    label: 'Another Link',
-    path: '/packages/',
-  },
 ];
 
 const NavMenu = () => (
