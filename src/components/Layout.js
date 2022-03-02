@@ -17,7 +17,7 @@ export default function Layout({ children }) {
         ]}
         htmlAttributes={{ lang: 'en-US' }}
       />
-      <div className="flex min-h-screen flex-col p-4 bg-guc-pink dark:bg-guc-blue transition duration-1000 text-guc-blue dark:text-guc-pink">
+      <div className="flex min-h-screen flex-col bg-guc-pink dark:bg-guc-blue transition duration-1000 text-guc-blue dark:text-guc-pink">
         <Header />
         <main className="flex-1 grid my-8">{children}</main>
         <Footer />

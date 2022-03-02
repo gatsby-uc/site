@@ -35,6 +35,31 @@ module.exports = {
         path: './src/data/',
       },
     },
+    {
+      resolve: 'gatsby-source-supabase',
+      options: {
+        supabaseUrl: process.env.SUPABASE_API_URL,
+        supabaseKey: process.env.SUPABASE_ANON_KEY,
+        types: [
+          {
+            type: 'Package',
+            query: (client) => client.from('packages').select('*'),
+          },
+          {
+            type: 'PackageScore',
+            query: (client) => client.from('package-scores').select('*'),
+          }
+        ]
+      },
+    },
+    {
+      resolve: 'gatsby-source-npmsio',
+      options: {
+        packages: [
+          "gatsby-plugin-fastify",
+        ]
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
 
@@ -43,7 +68,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
-    `gatsby-plugin-preact`,
+    `gatsby-plugin-preact`, 
 
     // Plumbing Plugins
     'gatsby-plugin-sitemap',
@@ -59,7 +84,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/
+          include: /\.svg$/
         }
       }
     },
