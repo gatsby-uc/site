@@ -1,0 +1,11 @@
+{
+  "name": "gatsby-plugin-npmsio",
+  "version": "0.1.0",
+  "description": "Source data from npmsio",
+  "main": "index.js",
+  "author": "Alex Moon",
+  "license": "MIT",
+  "peerDependencies": {
+    "npms.io": "^2.1.1"
+  }
+}

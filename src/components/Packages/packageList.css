@@ -1,0 +1,23 @@
+
+.CircularProgressbar-path {
+  @apply stroke-gray-700 group-hover:stroke-guc-blue;
+  transiton: stroke 1s ease-in-out;
+}
+
+.CircularProgressbar-trail {
+  @apply stroke-gray-300 group-hover:stroke-sky-300;
+  transiton: stroke 1s ease-in-out;
+
+}
+
+.score-container {
+  @apply relative w-6 h-6;
+}
+
+.score-value {
+  @apply absolute leading-4 top-1/2 left-1/2 text-sm font-normal select-none -translate-x-1/2 -translate-y-1/2;
+}
+
+.score-final-logo {
+  @apply fill-green-700 h-full w-full;
+}

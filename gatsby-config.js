@@ -52,6 +52,14 @@ module.exports = {
         ]
       },
     },
+    {
+      resolve: 'gatsby-source-npmsio',
+      options: {
+        packages: [
+          "gatsby-plugin-fastify",
+        ]
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
 
@@ -76,7 +84,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/
+          include: /\.svg$/
         }
       }
     },

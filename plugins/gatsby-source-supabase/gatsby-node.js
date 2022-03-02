@@ -26,19 +26,19 @@ exports.createSchemaCustomization = ({ actions }, { types }) => {
   const typeDefs = `
     type SupabasePackage implements Node {
       name: String!
-      last_analyzed_at: Date!
-      created_at: Date!
+      last_analyzed_at: Date! @dateformat
+      created_at: Date! @dateformat
       historicalScores: [SupabasePackageScore] @link(by: "package", from: "name")
     }
 
     type SupabasePackageScore implements Node {
       package: String!
-      analyzed_at: Date!
+      analyzed_at: Date! @dateformat
       final: Float!
       quality: Float!
       popularity: Float!
       maintenance: Float!
-      created_at: Date!
+      created_at: Date! @dateformat
     }
   `;
   createTypes(typeDefs);
@@ -81,27 +81,4 @@ exports.sourceNodes = async (
       reporter.panic("Error sourcing nodes data for type '" + typeName + "'", e);
     }
   }
-};
-
-exports.createResolvers = ({ createResolvers }) => {
-  const resolvers = {
-    SupabasePackage: {
-      latestScores: {
-        type: 'SupabasePackageScore',
-        resolve(source, args, context, info) {
-          return context.nodeModel.findOne({
-            type: 'SupabasePackageScore',
-            query: {
-              filter: {
-                package: { eq: source.name },
-                analyzed_at: { eq: source.last_analyzed_at },
-              },
-              limit: 1,
-            },
-          });
-        },
-      },
-    },
-  };
-  createResolvers(resolvers);
 };

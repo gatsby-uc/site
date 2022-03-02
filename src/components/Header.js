@@ -21,7 +21,7 @@ const NavMenu = () => (
         key={id}
         className="p-4 text-xl font-semibold underline decoration-dotted underline-offset-2 hover:underline-offset-4"
       >
-        <Link to={path}>{label}</Link>
+        <Link to={path}activeClassName="md:decoration-double" >{label}</Link>
       </li>
     ))}
   </ul>
