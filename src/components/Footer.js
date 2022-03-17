@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import socialIcons from "./Icons";
+import SimpleIcon from './SimpleIcon';
+import iconMap from "./icons";
+
 
 export default function Footer() {
   const {
@@ -21,11 +23,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {socials.map((item) => {
-            const SocialIcon = socialIcons[item.name.toLowerCase()] ?? (() => ("There's been an error"));
+            const socialIcon = iconMap[item.name.toLowerCase()];
             return (
               <a key={item.name} href={item.href} className="hover:opacity-50">
                 <span className="sr-only">{item.name}</span>
-                <SocialIcon className="h-6 w-6" aria-hidden="true" fill="currentColor" />
+                {/* <SocialIcon className="h-6 w-6" aria-hidden="true" fill="currentColor" /> */}
+                <SimpleIcon className="h-6 w-6" aria-hidden="true" icon={socialIcon} />
               </a>
             );
           })}

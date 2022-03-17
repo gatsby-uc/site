@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { DocumentTextIcon } from '@heroicons/react/outline';
 
-import GatsbySvg from '../../images/gatsby.svg';
-import NpmSvg from '../../images/npm.svg';
+import SimpleIcon from '../SimpleIcon';
+import { siGatsby, siNpm } from 'simple-icons/icons';
 import { ScoreList } from './ScoreList';
 import './packageList.css';
 
@@ -34,18 +34,31 @@ export function PackageListItem({ packageData }) {
             </p>
           </div>
           <div className="mt-2 flex gap-2 items-center text-sm text-gray-500 sm:mt-0 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <a href={packageData.npmsio.collected.metadata.links.npm} title="npm" target="_blank">
-              <NpmSvg className="fill-red-500 h-4 w-fit" />
+            <a
+              href={packageData.npmsio.collected.metadata.links.npm}
+              title="npm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {/* <NpmSvg className=" w-fit" /> */}
+              <SimpleIcon icon={siNpm} className="fill-red-500 h-6 w-6" />
             </a>
             <a
               href={packageData.npmsio.collected.metadata.links.npm}
               title="Readme"
               target="_blank"
+              rel="noreferrer"
             >
-              <DocumentTextIcon className="h-6 dark:text-white" />
+              <DocumentTextIcon className="h-6 w-6 dark:text-white" />
             </a>
-            <a href={`https://gatsbyjs.com/plugins/${packageData.name}`} title="Gatsby" target="_blank">
-              <GatsbySvg className="h-6" />
+            <a
+              href={`https://gatsbyjs.com/plugins/${packageData.name}`}
+              title="Gatsby"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {/* <GatsbySvg className="h-6" /> */}
+              <SimpleIcon icon={siGatsby} className="h-6 w-6 fill-gatsby-purple" />
             </a>
           </div>
         </div>
