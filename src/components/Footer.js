@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import SimpleIcon from './SimpleIcon';
-import iconMap from "./icons";
+import iconMap from "./Icons";
 
 
 export default function Footer() {

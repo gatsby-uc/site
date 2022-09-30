@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import iconMap from '../components/icons';
+import iconMap from '../components/Icons';
 import SimpleIcon from '../components/SimpleIcon';
 
 const IndexPage = () => {
