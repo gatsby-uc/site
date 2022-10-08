@@ -2547,13 +2547,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.7.2":
-  version: 1.7.2
-  resolution: "@headlessui/react@npm:1.7.2"
+"@headlessui/react@npm:^1.7.3":
+  version: 1.7.3
+  resolution: "@headlessui/react@npm:1.7.3"
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: 8889d7a1984c955c0034d8aed3211a91b90238ddecf116490bd892cae79c2983d8832ab450d387991d3330f5d5f1e4aa8d8e1ceb1ff2227960f76c89c0cc1e0a
+  checksum: c9391e15e63dc7e459d42125a94e22f964419c440d9f37fd85f6f501612aad42b3e30e79f712e8097c66e08891c26dcd662863e572ff21cc6cf34a3185ae4aa5
   languageName: node
   linkType: hard
 
@@ -8441,7 +8441,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gatsby-uc@workspace:."
   dependencies:
-    "@headlessui/react": ^1.7.2
+    "@headlessui/react": ^1.7.3
     "@heroicons/react": ^1.0.6
     "@supabase/supabase-js": ^1.35.7
     "@tailwindcss/typography": ^0.5.7
@@ -8465,9 +8465,9 @@ __metadata:
     http-status-codes: ^2.2.0
     node-fetch: ^3.2.10
     npms.io: ^2.2.2
-    postcss: ^8.4.16
-    preact: ^10.11.0
-    preact-render-to-string: ^5.2.4
+    postcss: ^8.4.17
+    preact: ^10.11.1
+    preact-render-to-string: ^5.2.5
     prettier: ^2.7.1
     rc-tooltip: ^5.2.2
     react: ^17.0.2
@@ -12437,7 +12437,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.14, postcss@npm:^8.4.16":
+"postcss@npm:^8.4.14":
   version: 8.4.16
   resolution: "postcss@npm:8.4.16"
   dependencies:
@@ -12448,21 +12448,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "preact-render-to-string@npm:5.2.4"
+"postcss@npm:^8.4.17":
+  version: 8.4.17
+  resolution: "postcss@npm:8.4.17"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: a6d9096dd711e17f7b1d18ff5dcb4fdedf3941d5a3dc8b0e4ea873b8f31972d57f73d6da9a8aed7ff389eb52190ed34f6a94f299a7f5ddc68b08a24a48f77eb9
+  languageName: node
+  linkType: hard
+
+"preact-render-to-string@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "preact-render-to-string@npm:5.2.5"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: cb29e280174bb4e8a77be454b927dfa35f2672d9bf2eb11d6634208b076d81508a35d53a38a5dfee7676fc48be2c1e0db2e83fca955f7016ce5ed844f35d92b4
+  checksum: 42a735274a190577e3a1fc785ab179a8ec422345d0fd24402146aa2e3c2b216b724c94d569677f744e366c2fbbe5619bc4ab8270cb8036c366d524b54e82fd3f
   languageName: node
   linkType: hard
 
-"preact@npm:^10.11.0":
-  version: 10.11.0
-  resolution: "preact@npm:10.11.0"
-  checksum: 1e3f8e6fe88f26a2896826f69121b70eb69c63a46bfc1160da8672b37618fcfd294128979ed27e37499604df90c1505c30545f75683f23d8f7e6ac0693d2ff14
+"preact@npm:^10.11.1":
+  version: 10.11.1
+  resolution: "preact@npm:10.11.1"
+  checksum: 4c4c450d8d8f6ad9ae027bb2baa7ec36b8a97241d7e40258b6f5480ac6cddb43f3e33011c82fd380fe94727622037253e09241cd1b29e0a2be77b58ef75ee425
   languageName: node
   linkType: hard
 
