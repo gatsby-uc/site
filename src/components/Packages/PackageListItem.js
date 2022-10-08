@@ -24,7 +24,7 @@ export function PackageListItem({ packageData }) {
             {packageData.npmsio.collected.metadata.description}
           </p>
         </div>
-        <div className="mt-2 flex flex-col sm:flex-row items-center justify-between overflow-hidden">
+        <div className="mt-2 flex flex-col sm:flex-row items-center justify-between">
           <div className="">
             <p className="flex items-center text-sm text-gray-500 dark:text-slate-200">
               Published&nbsp;
@@ -40,8 +40,7 @@ export function PackageListItem({ packageData }) {
               target="_blank"
               rel="noreferrer"
             >
-              {/* <NpmSvg className=" w-fit" /> */}
-              <SimpleIcon icon={siNpm} className="fill-red-500 h-6 w-6" />
+              <SimpleIcon icon={siNpm} className="text-red-500 h-6 w-6 hover:scale-125 transition transition-transform" />
             </a>
             <a
               href={packageData.npmsio.collected.metadata.links.npm}
@@ -49,7 +48,7 @@ export function PackageListItem({ packageData }) {
               target="_blank"
               rel="noreferrer"
             >
-              <DocumentTextIcon className="h-6 w-6 dark:text-white" />
+              <DocumentTextIcon className="h-6 w-6 dark:text-white hover:scale-125 transition transition-transform" />
             </a>
             <a
               href={`https://gatsbyjs.com/plugins/${packageData.name}`}
@@ -57,8 +56,7 @@ export function PackageListItem({ packageData }) {
               target="_blank"
               rel="noreferrer"
             >
-              {/* <GatsbySvg className="h-6" /> */}
-              <SimpleIcon icon={siGatsby} className="h-6 w-6 fill-gatsby-purple" />
+              <SimpleIcon icon={siGatsby} className="h-6 w-6 text-gatsby-purple hover:scale-125 transition transition-transform" />
             </a>
           </div>
         </div>

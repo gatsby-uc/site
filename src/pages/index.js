@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
+
 import Layout from '../components/Layout';
 import iconMap from '../components/Icons';
 import SimpleIcon from '../components/SimpleIcon';
@@ -23,8 +27,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <div className="flex items-center justify-center ">
-        <div className="flex flex-col items-center">
-          <h1 className="text-6xl md:text-8xl mb-16 mt-8 md:mb-64 text-center font-bold font-sans">
+        <div className="flex flex-col items-center gap-16 md:gap-32">
+          <h1 className="text-6xl md:text-8xl text-center font-bold font-sans">
             <span className="text-gatsby-purple">Gatsby</span>{' '}
             <span className="text-guc-bright-pink">User</span> Collective
           </h1>
@@ -60,20 +64,18 @@ const IndexPage = () => {
             })}
           </ul>
 
-          <a href='#intro-video' className='my-12'>Learn More!</a>
+          <a href="#intro-video" className="my-12">
+            Learn More!
+          </a>
         </div>
       </div>
 
-      <div id="intro-video" className='md:mx-8 flex items-center justify-center'>
-      <iframe
-          // width="100%"
-          // height="100%"
-          src="https://www.youtube-nocookie.com/embed/B92m1joOLME"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ aspectRatio: '16 / 9', width: '50vw' }}
+      <div id="intro-video" className="m-auto w-7/8 md:w-1/2">
+        <LiteYouTubeEmbed
+          id="B92m1joOLME"
+          title="Sustainably Maintaining the Gatsby Plugin Ecosystem"
+          className="w-100 h-100"
+          poster='hqdefault'
         />
       </div>
     </Layout>

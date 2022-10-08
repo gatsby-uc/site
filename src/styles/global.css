@@ -9,3 +9,7 @@
 html {
   @apply font-mono;
 }
+
+.yt-lite:before {
+  box-sizing: content-box;
+}
