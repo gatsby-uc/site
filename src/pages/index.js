@@ -4,8 +4,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
-
 import Layout from '../components/Layout';
+import Seo from '../components/Seo'
+
 import iconMap from '../components/Icons';
 import SimpleIcon from '../components/SimpleIcon';
 
@@ -83,3 +84,7 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head = () => (
+  <Seo />
+)

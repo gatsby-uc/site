@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+
 import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
 import AwkwardGif from '../../images/awkward.gif';
 
 export default function PackagePage({ data: { supabasePackage } }) {
@@ -8,7 +10,7 @@ export default function PackagePage({ data: { supabasePackage } }) {
     <Layout>
       <div className="mx-auto text-guc-blue dark:text-guc-pink space-y-8">
         <h1 className="font-bold text-3xl">{supabasePackage.name}</h1>
-        <p >Well this is awkward...we're not quite done building this.</p>
+        <p>Well this is awkward...we're not quite done building this.</p>
         <img className="m-auto" src={AwkwardGif} alt="I'm okay with it being awkward between us" />
       </div>
     </Layout>
@@ -24,3 +26,9 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({
+  data: {
+    supabasePackage: { name },
+  },
+}) => <Seo title={['package', name]} />;

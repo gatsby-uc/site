@@ -65,7 +65,6 @@ module.exports = {
 
     //Integration Plugins
     'gatsby-plugin-postcss',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     `gatsby-plugin-preact`, 
