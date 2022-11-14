@@ -19,13 +19,13 @@
     "format": "prettier --write '**/*.{js,md,json,yml,yaml,mdx}'"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.3",
+    "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^1.0.6",
     "@supabase/supabase-js": "^1.35.7",
-    "@tailwindcss/typography": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.8",
     "dotenv": "^16.0.3",
-    "gatsby": "^4.24.3",
-    "gatsby-plugin-ackee-tracker": "^3.2.5",
+    "gatsby": "^4.24.8",
+    "gatsby-plugin-ackee-tracker": "^3.2.6",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-npmsio": "workspace:^",
@@ -41,20 +41,20 @@
     "http-status-codes": "^2.2.0",
     "node-fetch": "^3.2.10",
     "npms.io": "^2.2.2",
-    "preact": "^10.11.1",
-    "preact-render-to-string": "^5.2.5",
+    "preact": "^10.11.3",
+    "preact-render-to-string": "^5.2.6",
     "rc-tooltip": "^5.2.2",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^17.0.2",
-    "react-lite-youtube-embed": "^2.3.1",
+    "react-lite-youtube-embed": "^2.3.52",
     "simple-icons": "^6.23.0",
     "tailwindcss": "^3.1.8"
   },
   "packageManager": "yarn@3.2.4",
   "devDependencies": {
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
     "prettier": "^2.7.1"
   }
 }
