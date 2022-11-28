@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
-    "@supabase/supabase-js": "^1.35.7",
+    "@supabase/supabase-js": "^2.1.1",
     "@tailwindcss/typography": "^0.5.8",
     "dotenv": "^16.0.3",
     "gatsby": "^5.2.0",
