@@ -26,8 +26,8 @@ exports.createSchemaCustomization = ({ actions }, { types }) => {
   const typeDefs = `
     type SupabasePackage implements Node {
       name: String!
-      last_analyzed_at: Date! @dateformat
       created_at: Date! @dateformat
+      last_analyzed_at: Date @dateformat
       historicalScores: [SupabasePackageScore] @link(by: "package", from: "name")
     }
 
