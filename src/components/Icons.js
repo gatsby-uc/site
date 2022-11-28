@@ -1,9 +1,9 @@
-import { siGithub, siTwitter, siDiscord } from 'simple-icons/icons';
+import { SiGithub, SiTwitter, SiDiscord } from 'react-icons/si';
 
 const socialIcons = {
-  github: siGithub,
-  twitter: siTwitter,
-  discord: siDiscord,
+  github: SiGithub,
+  twitter: SiTwitter,
+  discord: SiDiscord,
 }
 
 export default socialIcons;

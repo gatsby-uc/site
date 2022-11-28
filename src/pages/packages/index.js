@@ -17,39 +17,37 @@ export default function PackagePage({ data }) {
   );
 }
 
-export const query = graphql`
-  query allPackages {
-    allSupabasePackage(sort: { fields: name, order: ASC }) {
-      nodes {
-        id
-        name
-        last_analyzed_at
-        prettyDate: last_analyzed_at(formatString: "dddd DD MMMM YYYY")
-        packagePath: gatsbyPath(filePath: "/packages/{SupabasePackage.name}")
-        npmsio {
-          score {
-            final
-            detail {
-              quality
-              popularity
-              maintenance
-            }
+export const query = graphql`query allPackages {
+  allSupabasePackage(sort: {name: ASC}) {
+    nodes {
+      id
+      name
+      last_analyzed_at
+      prettyDate: last_analyzed_at(formatString: "dddd DD MMMM YYYY")
+      packagePath: gatsbyPath(filePath: "/packages/{SupabasePackage.name}")
+      npmsio {
+        score {
+          final
+          detail {
+            quality
+            popularity
+            maintenance
           }
-          collected {
-            metadata {
-              description
-              lastUpdated: date(fromNow: true)
-              version
-              links {
-                npm
-              }
+        }
+        collected {
+          metadata {
+            description
+            lastUpdated: date(fromNow: true)
+            version
+            links {
+              npm
             }
           }
         }
       }
     }
   }
-`;
+}`;
 
 export const Head = () => (
   <Seo title="packages" />

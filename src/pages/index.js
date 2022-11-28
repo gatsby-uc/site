@@ -8,7 +8,6 @@ import Layout from '../components/Layout';
 import Seo from '../components/Seo'
 
 import iconMap from '../components/Icons';
-import SimpleIcon from '../components/SimpleIcon';
 
 const IndexPage = () => {
   const {
@@ -35,27 +34,23 @@ const IndexPage = () => {
           </h1>
           <ul className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 xl:gap-64">
             {socials.map((item) => {
-              const socialIcon = iconMap[item.name.toLowerCase()];
+              const SocialIcon = iconMap[item.name.toLowerCase()];
               return (
                 <li key={item.name} className="flex flex-col items-center">
                   <div className="">
                     <a href={item.href} target="_blank" rel="noreferrer" className="text-gray-400 ">
                       <span className="sr-only">{item.name}</span>
-                      <span style={{ color: `#${socialIcon.hex}` }} className="">
-                        <SimpleIcon
-                          className={`h-32 w-32 text-blue saturate-50 dark:saturate-100 hover:opacity-75 ${
-                            item.color === '#181717' ? 'dark:invert' : null
+                      <SocialIcon
+                        className={`h-32 w-32 text-blue saturate-50 dark:saturate-100 hover:opacity-75 ${item.color === '#181717' ? 'dark:invert' : null
                           }`}
-                          aria-hidden="true"
-                          icon={socialIcon}
-                        />
-                      </span>
+                        color={item.color}
+                        aria-hidden="true"
+                      />
                     </a>
                   </div>
                   <h2
-                    className={`text-center text-2xl ${
-                      item.color === '#181717' ? 'dark:invert' : null
-                    }`}
+                    className={`text-center text-2xl ${item.color === '#181717' ? 'dark:invert' : null
+                      }`}
                     style={{ color: item.color }}
                   >
                     {item.cta}.
