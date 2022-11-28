@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 import { Popover, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { HiBars3, HiXMark } from 'react-icons/hi2';
 
 import DarkModeSwitch from './DarkModeSwitch';
 import Logo from './Logo';
@@ -21,7 +21,7 @@ const NavMenu = () => (
         key={id}
         className="p-4 text-xl font-semibold underline decoration-dotted underline-offset-2 hover:underline-offset-4"
       >
-        <Link to={path}activeClassName="md:decoration-double" >{label}</Link>
+        <Link to={path} activeClassName="md:decoration-double" >{label}</Link>
       </li>
     ))}
   </ul>
@@ -40,7 +40,7 @@ export default function Header() {
           <div className=" md:hidden">
             <Popover.Button className="nav-button">
               <span className="sr-only">Open menu</span>
-              <MenuIcon className="h-8 w-8" aria-hidden="true" />
+              <HiBars3 className="h-8 w-8" aria-hidden="true" />
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -72,7 +72,7 @@ export default function Header() {
                   <div className="-mr-1 -mt-1">
                     <Popover.Button className="">
                       <span className="sr-only">Close menu</span>
-                      <XIcon className="nav-button" aria-hidden="true" />
+                      <HiXMark className="nav-button" aria-hidden="true" />
                     </Popover.Button>
                   </div>
                 </div>

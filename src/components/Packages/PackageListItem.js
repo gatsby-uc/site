@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import { DocumentTextIcon } from '@heroicons/react/outline';
 
-import SimpleIcon from '../SimpleIcon';
-import { siGatsby, siNpm } from 'simple-icons/icons';
+import { HiOutlineDocumentText } from 'react-icons/hi2';
+import { SiGatsby, SiNpm } from 'react-icons/si'
+
 import { ScoreList } from './ScoreList';
 import './packageList.css';
 
@@ -56,7 +56,7 @@ export function PackageListItem({ packageData }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <SimpleIcon icon={siNpm} className="text-red-500 h-6 w-6 hover:scale-125 transition transition-transform" />
+                    <SiNpm className="text-red-500 h-6 w-6 hover:scale-125 transition transition-transform" />
                   </a>
                   <a
                     href={packageData.npmsio.collected.metadata.links.npm}
@@ -64,7 +64,7 @@ export function PackageListItem({ packageData }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <DocumentTextIcon className="h-6 w-6 dark:text-white hover:scale-125 transition transition-transform" />
+                    <HiOutlineDocumentText className="h-6 w-6 dark:text-white hover:scale-125 transition transition-transform" />
                   </a>
                 </>
                 : null
@@ -75,7 +75,7 @@ export function PackageListItem({ packageData }) {
               target="_blank"
               rel="noreferrer"
             >
-              <SimpleIcon icon={siGatsby} className="h-6 w-6 text-gatsby-purple hover:scale-125 transition transition-transform" />
+              <SiGatsby className="h-6 w-6 text-gatsby-purple hover:scale-125 transition transition-transform" />
             </a>
           </div>
         </div>
