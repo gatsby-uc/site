@@ -1,29 +1,45 @@
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 import Layout from '../components/Layout';
 import Seo from '../components/Seo'
-
 import iconMap from '../components/Icons';
+import Prose from '../components/Prose';
+import { formatCountingNumber } from '../libs/numbers';
+import { useLocale } from '../libs/hooks';
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const {
     allSocialJson: { socials },
-  } = useStaticQuery(graphql`
-    {
-      allSocialJson {
-        socials: nodes {
-          name
-          href
-          cta
-          color
-        }
-      }
+    allSupabasePackage: {
+      totalCount: totalPackageCount,
+      totalMonthlyDownloads
+    },
+    allGitHubContributor: {
+      totalCount: totalContributorCount
     }
-  `);
+
+  } = data;
+
+  const stats = [
+    {
+      name: "Packages",
+      value: totalPackageCount,
+    },
+    {
+      name: "Contributors",
+      value: totalContributorCount,
+    },
+    {
+      name: "Downloads",
+      value: totalMonthlyDownloads,
+    },
+  ];
+
+  const locale = useLocale();
   return (
     <Layout>
       <div className="flex items-center justify-center ">
@@ -32,6 +48,24 @@ const IndexPage = () => {
             <span className="text-gatsby-purple">Gatsby</span>{' '}
             <span className="text-guc-bright-pink">User</span> Collective
           </h1>
+          <Prose>The GUC exists to empower the Gatsby community to build and maintain the plugins we use every day. Instead of waiting on a burned-out maintainer or distracted company, anyone can be a maintainer. Those maintainers do the work they want when they want to do it.</Prose>
+          <ul className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 xl:gap-64">
+            {stats.map((stat) => (
+              <li key={stat.name} className="flex flex-col items-center gap-4">
+                <div className="text-4xl">
+                  <span className="sr-only">{stat.name}</span>
+                  {formatCountingNumber(stat.value, locale)}
+                </div>
+                <h2
+                  className={`text-center text-2xl`}
+                >
+                  {stat.name}.
+                </h2>
+              </li>
+            )
+            )}
+          </ul>
+          <Prose>All are welcome to come and contibute new plugins, donate existing ones, fix bugs, and add features. <em>Come Join the community!</em></Prose>
           <ul className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 xl:gap-64">
             {socials.map((item) => {
               const SocialIcon = iconMap[item.name.toLowerCase()];
@@ -83,3 +117,24 @@ export default IndexPage;
 export const Head = () => (
   <Seo />
 )
+
+export const query = graphql`
+{
+  allSupabasePackage {
+    totalCount
+    totalMonthlyDownloads: sum(
+      field: {npmsio: {evaluation: {popularity: {downloadsCount: SELECT}}}}
+    )
+  }
+  allGitHubContributor {
+    totalCount
+  }
+  allSocialJson {
+    socials: nodes {
+      name
+      href
+      cta
+      color
+    }
+  }
+}`;

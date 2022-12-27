@@ -1,4 +1,5 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, createContext, useContext } from 'react';
+import * as React from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -106,4 +107,27 @@ function useMedia(queries, values, defaultValue) {
     [] // Empty array ensures effect is only run on mount and unmount
   );
   return value;
+}
+
+
+const LocaleContext = createContext();
+
+function getLocale() {
+  if (typeof window !== `undefined`) {
+    return window?.navigator?.language;
+  }
+
+  return 'en-US';
+}
+
+export function useLocale() {
+  return useContext(LocaleContext)
+}
+
+export function LocaleProvider({ children }) {
+  return (
+    <LocaleContext.Provider value={getLocale()}>
+      {children}
+    </LocaleContext.Provider>
+  );
 }

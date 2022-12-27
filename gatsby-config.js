@@ -60,6 +60,12 @@ module.exports = {
         ]
       },
     },
+    {
+      resolve: `gatsby-source-github-contributors`,
+      options: {
+        repo: "gatsby-uc/plugins"
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
 

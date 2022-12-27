@@ -34,6 +34,8 @@
     "gatsby-plugin-sitemap": "^6.2.0",
     "gatsby-plugin-supabase": "workspace:^",
     "gatsby-source-filesystem": "^5.2.0",
+    "gatsby-source-github-contributors": "^0.1.10",
+    "gatsby-source-npm-package-search": "^5.3.0",
     "gatsby-transformer-json": "^5.2.0",
     "gatsby-transformer-sharp": "^5.2.0",
     "http-status-codes": "^2.2.0",
