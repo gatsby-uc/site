@@ -1,16 +1,16 @@
 require('dotenv').config()
 
-const { GATSBY_ACKEE_DOMAIN_ID, GATSBY_ACKEE_SERVER } = process.env;
+const { GA_MEASUREMENT_ID } = process.env;
 
 const otherPlugins = [];
-GATSBY_ACKEE_DOMAIN_ID &&
-  GATSBY_ACKEE_SERVER &&
+GA_MEASUREMENT_ID &&
   otherPlugins.push({
-    resolve: 'gatsby-plugin-ackee-tracker',
+    resolve: `gatsby-plugin-google-gtag`,
     options: {
-      domainId: GATSBY_ACKEE_DOMAIN_ID || '',
-      server: GATSBY_ACKEE_SERVER || '',
-      detailed: true,
+      trackingIds: [GA_MEASUREMENT_ID], // Google Analytics / GA
+      pluginConfig: {
+        head: true,
+      },
     },
   });
 
