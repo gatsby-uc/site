@@ -1,6 +1,11 @@
 require('dotenv').config()
 
-const { GA_MEASUREMENT_ID } = process.env;
+const {
+  GA_MEASUREMENT_ID,
+  GITHUB_TOKEN,
+  SUPABASE_API_URL,
+  SUPABASE_ANON_KEY
+} = process.env;
 
 const otherPlugins = [];
 GA_MEASUREMENT_ID &&
@@ -38,8 +43,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-supabase',
       options: {
-        supabaseUrl: process.env.SUPABASE_API_URL,
-        supabaseKey: process.env.SUPABASE_ANON_KEY,
+        supabaseUrl: SUPABASE_API_URL,
+        supabaseKey: SUPABASE_ANON_KEY,
         types: [
           {
             type: 'Package',
@@ -63,7 +68,8 @@ module.exports = {
     {
       resolve: `gatsby-source-github-contributors`,
       options: {
-        repo: "gatsby-uc/plugins"
+        repo: "gatsby-uc/plugins",
+        token: GITHUB_TOKEN
       }
     },
     'gatsby-transformer-sharp',
@@ -92,7 +98,7 @@ module.exports = {
         }
       }
     },
-    
+
     // 3rd party plugins
     ...otherPlugins,
   ],
