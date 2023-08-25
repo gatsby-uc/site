@@ -8907,7 +8907,7 @@ __metadata:
     node-fetch: ^3.3.2
     npms.io: ^2.2.5
     postcss: ^8.4.28
-    preact-render-to-string: ^5.2.6
+    preact-render-to-string: ^6.2.1
     prettier: ^3.0.2
     rc-tooltip: ^6.0.1
     react: ^18.2.0
@@ -13099,14 +13099,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:^5.2.6":
-  version: 5.2.6
-  resolution: "preact-render-to-string@npm:5.2.6"
+"preact-render-to-string@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "preact-render-to-string@npm:6.2.1"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: be8d5d8fb502d422c503e68af7bcccb6facd942f3ae9a4d093ebe3f1d4f0b15c540624bdac434d53a2a8e8fb7afa4606383414e937c40933ca43445470a026ff
+  checksum: 61411172d338dc3d254c4421f9536198c6c7a093d7d72636490eb89288a3052975f7b04dde1bd146130d4e34c5db728565eef2ee69f2536310f870c0aad4afe2
   languageName: node
   linkType: hard
 
