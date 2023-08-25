@@ -19,9 +19,9 @@
     "format": "prettier --write '**/*.{js,md,json,yml,yaml,mdx}'"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
+    "@headlessui/react": "^1.7.17",
     "@supabase/supabase-js": "^2.33.1",
-    "@tailwindcss/typography": "^0.5.8",
+    "@tailwindcss/typography": "^0.5.9",
     "dotenv": "^16.3.1",
     "gatsby": "^5.12.1",
     "gatsby-plugin-google-gtag": "^5.12.0",
@@ -39,8 +39,8 @@
     "gatsby-transformer-json": "^5.12.0",
     "gatsby-transformer-sharp": "^5.12.0",
     "http-status-codes": "^2.2.0",
-    "node-fetch": "^3.3.0",
-    "npms.io": "^2.2.2",
+    "node-fetch": "^3.3.2",
+    "npms.io": "^2.2.5",
     "preact-render-to-string": "^5.2.6",
     "rc-tooltip": "^5.3.1",
     "react": "^18.2.0",
@@ -52,8 +52,8 @@
   },
   "packageManager": "yarn@3.6.3",
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.20",
-    "prettier": "^2.8.1"
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "prettier": "^2.8.8"
   }
 }
