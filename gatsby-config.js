@@ -1,11 +1,8 @@
 require('dotenv').config()
 
-const {
-  GA_MEASUREMENT_ID,
-  GITHUB_TOKEN,
-  SUPABASE_API_URL,
-  SUPABASE_ANON_KEY
-} = process.env;
+const adapter = require("gatsby-adapter-netlify").default;
+
+const { GATSBY_ACKEE_DOMAIN_ID, GATSBY_ACKEE_SERVER } = process.env;
 
 const otherPlugins = [];
 GA_MEASUREMENT_ID &&
@@ -20,6 +17,10 @@ GA_MEASUREMENT_ID &&
   });
 
 module.exports = {
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: true,
+    imageCDN: false,
+  }),
   siteMetadata: {
     title: `Gatsby UC`,
     siteUrl: `https://gatsbyuc.dev`,
