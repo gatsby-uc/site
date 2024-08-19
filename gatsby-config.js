@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const adapter = require("gatsby-adapter-netlify").default;
+
 const { GATSBY_ACKEE_DOMAIN_ID, GATSBY_ACKEE_SERVER } = process.env;
 
 const otherPlugins = [];
@@ -15,6 +17,10 @@ GATSBY_ACKEE_DOMAIN_ID &&
   });
 
 module.exports = {
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: true,
+    imageCDN: false,
+  }),
   siteMetadata: {
     title: `Gatsby UC`,
     siteUrl: `https://gatsbyuc.dev`,
