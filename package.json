@@ -16,7 +16,7 @@
     "format": "prettier --write '**/*.{js,md,json,yml,yaml,mdx}'"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
+    "@headlessui/react": "^1.7.19",
     "@supabase/supabase-js": "^2.45.1",
     "@tailwindcss/typography": "^0.5.14",
     "dotenv": "^16.4.5",
