@@ -53,5 +53,8 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3"
+  },
+  "resolutions": {
+    "gatsby-source-github-contributors@^0.1.10": "patch:gatsby-source-github-contributors@npm%3A0.1.10#./.yarn/patches/gatsby-source-github-contributors-npm-0.1.10-5cec58173b.patch"
   }
 }

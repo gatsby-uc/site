@@ -11,8 +11,12 @@ public
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+!.yarn/patches
 .pnp.*
 
 
 # Environment Variables
 .env*
+
+# Netlify
+.netlify/
