@@ -1,0 +1,31 @@
+diff --git a/gatsby-node.js b/gatsby-node.js
+index 51c4f3d783327b6e8ac0d5b6fdebc234425eb91a..81161516a4127449c690f9d0063187dd49cf1f6f 100644
+--- a/gatsby-node.js
++++ b/gatsby-node.js
+@@ -13,15 +13,22 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, opt
+         .flat()
+         .map((page) => page.body)
+         .flat();
+-    const logins = contributors.map(node => node.login);
+-    const profiles = await Promise.all(logins.map(login => github.get(`/users/${login}`).then((res) => res.body)));
++    const logins = contributors.filter(node => node.type !== "Bot").map(node => node.login);
++    const profiles = await Promise.all(logins.map(
++        login => github.get(`/users/${login}`)
++            .then((res) => res.body)
++            .catch((err) => {
++                console.warn(`Failed to fetch profile for ${login}: ${err.message}`);
++                return {};
++            })
++        ));
+     const loginToProfile = Object.fromEntries(profiles.map(profile => [profile.login, profile]));
+     contributors.forEach(node => {
+         const profile = loginToProfile[node.login];
+         return actions.createNode({
+             ...camelcase_keys_1.default(node),
+-            name: profile.name,
+-            url: profile.blog || profile.html_url,
++            name: profile?.name,
++            url: profile?.blog || profile?.html_url,
+             id: createNodeId(node.id),
+             internal: {
+                 type: "GitHubContributor",
