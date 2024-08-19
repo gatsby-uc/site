@@ -1,3 +1,6 @@
+
+const adapter = require("gatsby-adapter-netlify").default;
+
 require('dotenv').config()
 
 const {
@@ -20,6 +23,10 @@ GA_MEASUREMENT_ID &&
   });
 
 module.exports = {
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: true,
+    imageCDN: false,
+  }),
   siteMetadata: {
     title: `Gatsby UC`,
     siteUrl: `https://gatsbyuc.dev`,
