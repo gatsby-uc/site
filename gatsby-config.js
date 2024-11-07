@@ -1,14 +1,8 @@
+const adapter = require('gatsby-adapter-netlify').default;
 
-const adapter = require("gatsby-adapter-netlify").default;
+require('dotenv').config();
 
-require('dotenv').config()
-
-const {
-  GA_MEASUREMENT_ID,
-  GITHUB_TOKEN,
-  SUPABASE_API_URL,
-  SUPABASE_ANON_KEY
-} = process.env;
+const { GA_MEASUREMENT_ID, GITHUB_TOKEN, SUPABASE_API_URL, SUPABASE_ANON_KEY } = process.env;
 
 const otherPlugins = [];
 GA_MEASUREMENT_ID &&
@@ -55,29 +49,27 @@ module.exports = {
         types: [
           {
             type: 'Package',
-            query: (client) => client.from('packages').select('*'),
+            query: (client) => client.from('packages').select('*').eq('deprecated', false),
           },
           {
             type: 'PackageScore',
             query: (client) => client.from('package-scores').select('*'),
-          }
-        ]
+          },
+        ],
       },
     },
     {
       resolve: 'gatsby-source-npmsio',
       options: {
-        packages: [
-          "gatsby-plugin-fastify",
-        ]
+        packages: ['gatsby-plugin-fastify'],
       },
     },
     {
       resolve: `gatsby-source-github-contributors`,
       options: {
-        repo: "gatsby-uc/plugins",
-        token: GITHUB_TOKEN
-      }
+        repo: 'gatsby-uc/plugins',
+        token: GITHUB_TOKEN,
+      },
     },
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
@@ -96,14 +88,13 @@ module.exports = {
       },
     },
 
-
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /\.svg$/
-        }
-      }
+          include: /\.svg$/,
+        },
+      },
     },
 
     // 3rd party plugins
